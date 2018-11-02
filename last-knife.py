@@ -2,7 +2,6 @@ import time
 import itertools
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 import cv2 as cv
 from mss import mss
@@ -12,6 +11,12 @@ import pyautogui
 
 from uncertainties import ufloat
 import uncertainties.unumpy as unp
+
+
+SHOW_PREVIEW = True
+GAME_CENTER = (250, 150)
+
+z = 2
 
 
 class Timeout:
@@ -47,8 +52,6 @@ click_timeout = Timeout(0.05)
 speed_cap = 300
 click_latency = 0.11
 
-z = 2
-
 
 target_color = np.array([0, 0, 255], dtype=np.uint8)
 prediction_color = np.array([0, 255, 0], dtype=np.uint8)
@@ -56,8 +59,8 @@ activation_color = np.array([255, 0, 0], dtype=np.uint8)
 
 
 bounding_box = {
-    'top': 250,
-    'left': 150,
+    'top': GAME_CENTER[0],
+    'left': GAME_CENTER[1],
     'width': size[0],
     'height': size[1]
 }
@@ -196,7 +199,9 @@ try:
                     state_history.append([fps, speed, window_width, preview])
 
 
-                #cv.imshow('Live Feed', preview)
+                if SHOW_PREVIEW:
+                    cv.imshow('Live Feed', preview)
+
                 if print_timeout:
                     print('FPS: {:5.1f} +- {:5.1f}, Speed: {:6.1f} +- {:5.1f}, Window: {:6.1f}'.format(
                         fps.n, fps.s,
@@ -218,7 +223,7 @@ try:
 finally:
     fps, speed, window_width, preview = state_history[-1]
     image = Image.fromarray(preview[:,:,::-1])
-    image.save('last-state.png')
+    image.save('final-state.png')
     
     print()
     print('----- Final Click -----')
