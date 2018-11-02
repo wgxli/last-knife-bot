@@ -1,5 +1,6 @@
 # last-knife-bot
 Desktop AI for the "Last Knife" messenger game.
+Reliably reaches 200 points, with a high score (so far) of 415.
 
 ## Usage
 ### Basic Setup
@@ -16,9 +17,15 @@ and start the first level.
 * The white area represents the processed foreground from the game's video feed.
 * The green arcs show the bot's prediction for where any obstacles will be
   upon clicking.
-* The red arc shows the bot's uncertainty.
+* The red arc shows the bot's *exclusion window*, representing its uncertainty.
   If any of the predicted obstacle positions (green arcs) overlap with
   the red arc, the bot will not click.
+
+### Interpreting the Command Line Output
+* The `FPS` statistic shows the number of frames per second the bot is running at.
+* The `Speed` statistic shows the estimated clockwise rotation rate of the wheel,
+  in degrees per second.
+* The `Window` statistic shows the width of the exclusion window, in degrees.
 
 ## Requirements
 Currently supports only Python 3.
