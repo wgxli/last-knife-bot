@@ -3,11 +3,13 @@ Desktop AI for the "Last Knife" messenger game.
 
 ## Usage
 ### Basic Setup
-* Open the "Last Knife" messenger game in any browser,
+1. Open the "Last Knife" messenger game in any browser,
 and start the first level.
-* Note the pixel coordinates of the center of the spinning wheel.
-  Change the `GAME_CENTER` variable to these coordinates.
-* Run `last-knife.py`.
+2. Note the pixel coordinates of the center of the spinning wheel.
+   Alternatively, guess the coordinates and iterate steps 3 and 4 until a good
+   approximation is found.
+3. Change the `GAME_CENTER` variable to the coordinates recorded in step 2.
+4. Run `last-knife.py`.
 
 ### Interpreting the Preview Window
 ![Screenshot of bot during gameplay.](https://raw.githubusercontent.com/wgxli/last-knife-bot/master/screenshot.png)

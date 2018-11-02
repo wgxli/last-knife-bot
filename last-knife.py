@@ -13,7 +13,7 @@ from uncertainties import ufloat
 import uncertainties.unumpy as unp
 
 
-SHOW_PREVIEW = True
+SHOW_PREVIEW = False
 GAME_CENTER = (250, 150)
 
 z = 2
